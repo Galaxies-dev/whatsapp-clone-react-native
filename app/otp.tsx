@@ -11,8 +11,10 @@ import {
   KeyboardAvoidingView,
   Platform,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import MaskInput from 'react-native-mask-input';
+import { isClerkAPIResponseError, useSignIn, useSignUp } from '@clerk/clerk-expo';
 
 const GER_PHONE = [
   `+`,
@@ -34,22 +36,65 @@ const GER_PHONE = [
 ];
 
 const Page = () => {
-  const [phone, setPhone] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 90 : 0;
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const { signUp, setActive } = useSignUp();
+  const { signIn } = useSignIn();
 
   const openLink = () => {
     Linking.openURL('https://galaxies.dev');
   };
 
-  const sendOTP = () => {
-    console.log('sendOTP', phone);
+  const sendOTP = async () => {
+    console.log('sendOTP', phoneNumber);
     setLoading(true);
-    setTimeout(() => {
-      router.push(`/verify/${phone}`);
+    try {
+      await signUp!.create({
+        phoneNumber,
+      });
+      console.log('TESafter createT: ', signUp!.createdSessionId);
+
+      signUp!.preparePhoneNumberVerification();
+
+      console.log('after prepare: ');
+      router.push(`/verify/${phoneNumber}`);
+    } catch (err) {
+      console.log('error', JSON.stringify(err, null, 2));
+
+      if (isClerkAPIResponseError(err)) {
+        if (err.errors[0].code === 'form_identifier_exists') {
+          // User signed up before
+          console.log('User signed up before');
+          trySignIn();
+        } else {
+          Alert.alert('Error', err.errors[0].message);
+        }
+      }
       setLoading(false);
-    }, 2000);
+    }
+  };
+
+  const trySignIn = async () => {
+    console.log('trySignIn', phoneNumber);
+
+    const { supportedFirstFactors } = await signIn!.create({
+      identifier: phoneNumber,
+    });
+
+    const firstPhoneFactor: any = supportedFirstFactors.find((factor: any) => {
+      return factor.strategy === 'phone_code';
+    });
+
+    const { phoneNumberId } = firstPhoneFactor;
+
+    await signIn!.prepareFirstFactor({
+      strategy: 'phone_code',
+      phoneNumberId,
+    });
+
+    router.push(`/verify/${phoneNumber}?signin=true`);
   };
 
   return (
@@ -77,12 +122,12 @@ const Page = () => {
           <View style={styles.separator} />
 
           <MaskInput
-            value={phone}
+            value={phoneNumber}
             keyboardType="numeric"
             autoFocus
             placeholder="+12 your phone number"
             onChangeText={(masked, unmasked) => {
-              setPhone(masked);
+              setPhoneNumber(masked);
             }}
             mask={GER_PHONE}
             style={styles.input}
@@ -104,9 +149,9 @@ const Page = () => {
         <View style={{ flex: 1 }} />
 
         <TouchableOpacity
-          style={[styles.button, phone !== '' ? styles.enabled : null]}
+          style={[styles.button, phoneNumber !== '' ? styles.enabled : null, { marginBottom: 20 }]}
           onPress={sendOTP}>
-          <Text style={[styles.buttonText, phone !== '' ? styles.enabled : null]}>Next</Text>
+          <Text style={[styles.buttonText, phoneNumber !== '' ? styles.enabled : null]}>Next</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
