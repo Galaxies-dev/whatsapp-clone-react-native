@@ -8,7 +8,14 @@ const TabsLayout = () => {
   return (
     <Tabs
       screenOptions={{
+        tabBarStyle: { backgroundColor: Colors.background },
         tabBarActiveTintColor: Colors.primary,
+        tabBarInactiveBackgroundColor: Colors.background,
+        tabBarActiveBackgroundColor: Colors.background,
+        headerStyle: {
+          backgroundColor: Colors.background,
+        },
+        headerShadowVisible: false,
       }}>
       <Tabs.Screen
         name="updates"
@@ -26,6 +33,7 @@ const TabsLayout = () => {
           tabBarIcon: ({ size, color }) => (
             <MaterialCommunityIcons name="phone-outline" size={size} color={color} />
           ),
+          headerShown: false,
         }}
       />
       <Tabs.Screen

@@ -5,6 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
 import * as SecureStore from 'expo-secure-store';
+import { View } from 'react-native';
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 // Cache the Clerk JWT
@@ -59,14 +60,14 @@ const InitialLayout = () => {
     const inTabsGroup = segments[0] === '(auth)';
 
     if (isSignedIn && !inTabsGroup) {
-      router.replace('/(tabs)/chats');
+      router.replace('/(tabs)/calls');
     } else if (!isSignedIn) {
       router.replace('/');
     }
   }, [isSignedIn]);
 
   if (!loaded || !isLoaded) {
-    return null;
+    return <View />;
   }
 
   return (

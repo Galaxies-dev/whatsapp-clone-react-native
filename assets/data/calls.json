@@ -1,0 +1,137 @@
+[
+  {
+    "id": "3f8aab84-d949-4e85-a103-479b3f799d6c",
+    "name": "Odessa",
+    "date": "Wed Jun 29 2024 00:04:26 GMT+0200 (Central European Summer Time)",
+    "incoming": true,
+    "missed": false,
+    "img": "https://i.pravatar.cc/150?u=odessaduke@marketoid.com",
+    "video": true
+  },
+  {
+    "id": "1d2d36f4-5d99-4460-ab27-d9d72498ade0",
+    "name": "Schultz",
+    "date": "Sat Jul 04 2024 15:05:56 GMT+0200 (Central European Summer Time)",
+    "incoming": true,
+    "missed": false,
+    "img": "https://i.pravatar.cc/150?u=schultzduke@marketoid.com",
+    "video": true
+  },
+  {
+    "id": "d7fc5d37-af90-4516-a842-8a8285742c00",
+    "name": "Mclean",
+    "date": "Sun Dec 02 2024 17:16:44 GMT+0100 (Central European Standard Time)",
+    "incoming": true,
+    "missed": true,
+    "img": "https://i.pravatar.cc/150?u=mcleanduke@marketoid.com",
+    "video": false
+  },
+  {
+    "id": "b6d176cb-5b30-456e-ba55-defcb2e8d141",
+    "name": "Marcie",
+    "date": "Wed Jun 07 2024 10:37:26 GMT+0200 (Central European Summer Time)",
+    "incoming": false,
+    "missed": true,
+    "img": "https://i.pravatar.cc/150?u=marcieduke@marketoid.com",
+    "video": true
+  },
+  {
+    "id": "ff247138-a7e5-4c04-9d2f-35eb2fd71603",
+    "name": "Ewing",
+    "date": "Wed Apr 27 2024 14:30:44 GMT+0200 (Central European Summer Time)",
+    "incoming": true,
+    "missed": true,
+    "img": "https://i.pravatar.cc/150?u=ewingduke@marketoid.com",
+    "video": false
+  },
+  {
+    "id": "b3654d0c-8ce0-4500-8c82-65772697747e",
+    "name": "Maynard",
+    "date": "Sun Apr 27 2024 04:22:49 GMT+0200 (Central European Summer Time)",
+    "incoming": true,
+    "missed": false,
+    "img": "https://i.pravatar.cc/150?u=maynardduke@marketoid.com",
+    "video": true
+  },
+  {
+    "id": "909e7638-0c11-4e5c-984d-ec88d8ad9b5a",
+    "name": "Claudine",
+    "date": "Sun Feb 07 2024 19:06:18 GMT+0100 (Central European Standard Time)",
+    "incoming": false,
+    "missed": true,
+    "img": "https://i.pravatar.cc/150?u=claudineduke@marketoid.com",
+    "video": true
+  },
+  {
+    "id": "df48d8bf-6d75-4088-9226-f74770cc2c9c",
+    "name": "Sandra",
+    "date": "Mon Feb 19 2024 20:05:15 GMT+0100 (Central European Standard Time)",
+    "incoming": true,
+    "missed": false,
+    "img": "https://i.pravatar.cc/150?u=sandraduke@marketoid.com",
+    "video": false
+  },
+  {
+    "id": "b78a53ea-d9c9-4708-8a71-42f967a6e874",
+    "name": "Barry",
+    "date": "Wed Dec 14 2024 08:18:04 GMT+0100 (Central European Standard Time)",
+    "incoming": true,
+    "missed": false,
+    "img": "https://i.pravatar.cc/150?u=barryduke@marketoid.com",
+    "video": true
+  },
+  {
+    "id": "fc370ccb-c096-455a-8a52-de2c02ac1706",
+    "name": "Maria",
+    "date": "Sat Dec 13 2024 04:15:18 GMT+0100 (Central European Standard Time)",
+    "incoming": true,
+    "missed": false,
+    "img": "https://i.pravatar.cc/150?u=mariaduke@marketoid.com",
+    "video": false
+  },
+  {
+    "id": "cea6b2c4-47a9-4617-b499-2ff61de0cc2e",
+    "name": "Nichols",
+    "date": "Fri Apr 08 2024 20:21:55 GMT+0100 (Central European Standard Time)",
+    "incoming": true,
+    "missed": true,
+    "img": "https://i.pravatar.cc/150?u=nicholsduke@marketoid.com",
+    "video": false
+  },
+  {
+    "id": "770e8eba-f6df-4a1b-86f0-1d28121dcdbe",
+    "name": "Fitzgerald",
+    "date": "Fri Apr 25 2024 10:36:16 GMT+0200 (Central European Summer Time)",
+    "incoming": false,
+    "missed": false,
+    "img": "https://i.pravatar.cc/150?u=fitzgeraldduke@marketoid.com",
+    "video": true
+  },
+  {
+    "id": "3ea98283-5991-4491-ad0e-a2652c791e45",
+    "name": "Nettie",
+    "date": "Sat Sep 22 2024 21:44:43 GMT+0200 (Central European Summer Time)",
+    "incoming": false,
+    "missed": false,
+    "img": "https://i.pravatar.cc/150?u=nettieduke@marketoid.com",
+    "video": true
+  },
+  {
+    "id": "eef03d7f-1722-418c-8c13-e0853095fb70",
+    "name": "Lacy",
+    "date": "Mon Oct 03 2024 07:32:03 GMT+0100 (Central European Standard Time)",
+    "incoming": false,
+    "missed": true,
+    "img": "https://i.pravatar.cc/150?u=lacyduke@marketoid.com",
+    "video": true
+  },
+  {
+    "id": "861b9477-f908-4b8b-89f5-89f9af321a62",
+    "name": "Cole",
+    "date": "Fri Apr 22 2024 12:11:20 GMT+0200 (Central European Summer Time)",
+    "incoming": true,
+    "missed": true,
+    "img": "https://i.pravatar.cc/150?u=coleduke@marketoid.com",
+    "video": true
+  }
+]

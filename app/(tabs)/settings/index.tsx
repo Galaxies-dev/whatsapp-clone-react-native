@@ -1,7 +1,9 @@
 import BoxedIcon from '@/components/BoxedIcon';
+import SearchField from '@/components/SearchField';
 import Colors from '@/constants/Colors';
+import { defaultStyles } from '@/constants/Styles';
 import { Ionicons } from '@expo/vector-icons';
-import { View, StyleSheet, ScrollView, TextInput, Text, FlatList } from 'react-native';
+import { View, ScrollView, Text, FlatList } from 'react-native';
 const Page = () => {
   const devices = [
     {
@@ -67,23 +69,14 @@ const Page = () => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         contentContainerStyle={{ paddingBottom: 40 }}>
-        <View style={styles.searchSection}>
-          <Ionicons style={styles.searchIcon} name="search" size={20} color={Colors.gray} />
-          <TextInput
-            style={styles.input}
-            placeholder="Search"
-            placeholderTextColor={Colors.gray}
-            underlineColorAndroid="transparent"
-          />
-        </View>
-
-        <View style={styles.block}>
+        <SearchField />
+        <View style={defaultStyles.block}>
           <FlatList
             data={devices}
             scrollEnabled={false}
-            ItemSeparatorComponent={() => <View style={styles.separator} />}
+            ItemSeparatorComponent={() => <View style={defaultStyles.separator} />}
             renderItem={({ item }) => (
-              <View style={styles.item}>
+              <View style={defaultStyles.item}>
                 <BoxedIcon name={item.icon} backgroundColor={item.backgroundColor} />
 
                 <Text style={{ fontSize: 18, flex: 1 }}>{item.name}</Text>
@@ -93,13 +86,13 @@ const Page = () => {
           />
         </View>
 
-        <View style={styles.block}>
+        <View style={defaultStyles.block}>
           <FlatList
             data={items}
             scrollEnabled={false}
-            ItemSeparatorComponent={() => <View style={styles.separator} />}
+            ItemSeparatorComponent={() => <View style={defaultStyles.separator} />}
             renderItem={({ item }) => (
-              <View style={styles.item}>
+              <View style={defaultStyles.item}>
                 <BoxedIcon name={item.icon} backgroundColor={item.backgroundColor} />
 
                 <Text style={{ fontSize: 18, flex: 1 }}>{item.name}</Text>
@@ -109,13 +102,13 @@ const Page = () => {
           />
         </View>
 
-        <View style={styles.block}>
+        <View style={defaultStyles.block}>
           <FlatList
             data={support}
             scrollEnabled={false}
-            ItemSeparatorComponent={() => <View style={styles.separator} />}
+            ItemSeparatorComponent={() => <View style={defaultStyles.separator} />}
             renderItem={({ item }) => (
-              <View style={styles.item}>
+              <View style={defaultStyles.item}>
                 <BoxedIcon name={item.icon} backgroundColor={item.backgroundColor} />
 
                 <Text style={{ fontSize: 18, flex: 1 }}>{item.name}</Text>
@@ -129,43 +122,4 @@ const Page = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  searchSection: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: Colors.disabled,
-    marginHorizontal: 14,
-    marginTop: 10,
-    borderRadius: 10,
-  },
-  searchIcon: {
-    padding: 6,
-  },
-  input: {
-    paddingTop: 10,
-    paddingRight: 10,
-    paddingBottom: 10,
-    paddingLeft: 0,
-    fontSize: 18,
-    backgroundColor: Colors.disabled,
-    color: '#000',
-  },
-  block: {
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    marginHorizontal: 14,
-    marginTop: 40,
-  },
-  item: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 10,
-    gap: 10,
-  },
-  separator: {
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: Colors.disabled,
-    marginLeft: 50,
-  },
-});
 export default Page;

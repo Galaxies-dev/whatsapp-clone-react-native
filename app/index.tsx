@@ -25,7 +25,7 @@ const WelcomeScreen = () => {
         </Text>
         .
       </Text>
-      <Link href={'/otp'} asChild>
+      <Link href={'/otp'} replace asChild>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Agree & Continue</Text>
         </TouchableOpacity>
