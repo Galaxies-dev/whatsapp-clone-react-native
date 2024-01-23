@@ -1,5 +1,4 @@
 import BoxedIcon from '@/components/BoxedIcon';
-import SearchField from '@/components/SearchField';
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
 import { Ionicons } from '@expo/vector-icons';
@@ -69,7 +68,6 @@ const Page = () => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         contentContainerStyle={{ paddingBottom: 40 }}>
-        <SearchField />
         <View style={defaultStyles.block}>
           <FlatList
             data={devices}

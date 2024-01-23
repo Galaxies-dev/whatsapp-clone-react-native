@@ -1,4 +1,3 @@
-import SearchField from '@/components/SearchField';
 import Colors from '@/constants/Colors';
 import { Stack } from 'expo-router';
 import {
@@ -24,7 +23,6 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import SwipeableRow from '@/components/SwipeableRow';
 import * as Haptics from 'expo-haptics';
 
@@ -89,9 +87,7 @@ const Page = () => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         contentContainerStyle={{ paddingBottom: 40 }}>
-        <SearchField />
-
-        <Animated.View style={defaultStyles.block} layout={transition}>
+        <Animated.View style={[defaultStyles.block]} layout={transition}>
           <Animated.FlatList
             skipEnteringExitingAnimations
             data={items}

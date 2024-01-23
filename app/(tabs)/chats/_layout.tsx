@@ -34,6 +34,12 @@ const Layout = () => {
               </Link>
             </View>
           ),
+          headerStyle: {
+            backgroundColor: '#fff',
+          },
+          headerSearchBarOptions: {
+            placeholder: 'Search',
+          },
         }}
       />
     </Stack>
