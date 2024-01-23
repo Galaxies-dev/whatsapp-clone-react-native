@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   searchSection: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Colors.disabled,
+    backgroundColor: Colors.lightGray,
     marginHorizontal: 14,
     marginTop: 10,
     borderRadius: 10,
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingLeft: 0,
     fontSize: 18,
-    backgroundColor: Colors.disabled,
+    backgroundColor: Colors.lightGray,
     color: '#000',
   },
 });

@@ -1,8 +1,9 @@
 export default {
   primary: '#1063FD',
-  background: '#F3EFFB',
-  disabled: '#DCDBE2',
-  gray: '#A4A2A9',
+  muted: '#3A5A92',
+  background: '#EFEEF6',
+  gray: '#6E6E73',
+  lightGray: '#DCDCE2',
   green: '#4FEE57',
   red: '#EF0827',
   yellow: '#FCC70B',

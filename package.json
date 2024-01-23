@@ -36,7 +36,9 @@
     "react-native-resegmented-control": "^2.4.0",
     "react-native-safe-area-context": "4.8.2",
     "react-native-screens": "~3.29.0",
-    "react-native-web": "~0.19.6"
+    "react-native-web": "~0.19.6",
+    "react-native-gesture-handler": "~2.14.0",
+    "expo-haptics": "~12.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

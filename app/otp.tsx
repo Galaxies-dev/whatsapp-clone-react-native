@@ -50,6 +50,7 @@ const Page = () => {
   const sendOTP = async () => {
     console.log('sendOTP', phoneNumber);
     setLoading(true);
+
     try {
       await signUp!.create({
         phoneNumber,
@@ -67,12 +68,12 @@ const Page = () => {
         if (err.errors[0].code === 'form_identifier_exists') {
           // User signed up before
           console.log('User signed up before');
-          trySignIn();
+          await trySignIn();
         } else {
+          setLoading(false);
           Alert.alert('Error', err.errors[0].message);
         }
       }
-      setLoading(false);
     }
   };
 
@@ -95,6 +96,7 @@ const Page = () => {
     });
 
     router.push(`/verify/${phoneNumber}?signin=true`);
+    setLoading(false);
   };
 
   return (
@@ -181,7 +183,7 @@ const styles = StyleSheet.create({
   button: {
     width: '100%',
     alignItems: 'center',
-    backgroundColor: Colors.disabled,
+    backgroundColor: Colors.lightGray,
     padding: 10,
     borderRadius: 10,
   },
