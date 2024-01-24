@@ -33,6 +33,7 @@
     "react-native": "0.73.2",
     "react-native-confirmation-code-field": "^7.3.2",
     "react-native-gesture-handler": "~2.14.0",
+    "react-native-gifted-chat": "^2.4.0",
     "react-native-mask-input": "^1.2.3",
     "react-native-reanimated": "~3.6.0",
     "react-native-resegmented-control": "^2.4.0",

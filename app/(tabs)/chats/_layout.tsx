@@ -42,6 +42,27 @@ const Layout = () => {
           },
         }}
       />
+
+      <Stack.Screen
+        name="[id]"
+        options={{
+          title: '',
+          headerBackTitle: 'Chats',
+          headerRight: () => (
+            <View style={{ flexDirection: 'row', gap: 30 }}>
+              <TouchableOpacity>
+                <Ionicons name="videocam-outline" color={Colors.primary} size={30} />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Ionicons name="call-outline" color={Colors.primary} size={30} />
+              </TouchableOpacity>
+            </View>
+          ),
+          headerStyle: {
+            backgroundColor: Colors.background,
+          },
+        }}
+      />
     </Stack>
   );
 };

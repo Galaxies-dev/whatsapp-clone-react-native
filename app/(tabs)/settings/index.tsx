@@ -1,8 +1,10 @@
 import BoxedIcon from '@/components/BoxedIcon';
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
+import { useAuth } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
-import { View, ScrollView, Text, FlatList } from 'react-native';
+import { View, ScrollView, Text, FlatList, Touchable } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const Page = () => {
   const devices = [
     {
@@ -62,6 +64,11 @@ const Page = () => {
       backgroundColor: Colors.red,
     },
   ];
+  const { signOut } = useAuth();
+
+  const onSignOut = () => {
+    signOut();
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
@@ -115,6 +122,18 @@ const Page = () => {
             )}
           />
         </View>
+
+        <TouchableOpacity onPress={onSignOut}>
+          <Text
+            style={{
+              color: Colors.primary,
+              fontSize: 18,
+              textAlign: 'center',
+              paddingVertical: 14,
+            }}>
+            Log Out
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
