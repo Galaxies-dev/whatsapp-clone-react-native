@@ -1,4 +1,4 @@
-import { View, Text, SectionList, StyleSheet, StatusBar, Image } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import contacts from '@/assets/data/contacts.json';
 import Colors from '@/constants/Colors';
 import { AlphabetList } from 'react-native-section-alphabet-list';
