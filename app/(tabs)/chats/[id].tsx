@@ -1,40 +1,51 @@
+import ChatMessageBox from '@/components/ChatMessageBox';
+import ReplyMessageBar from '@/components/ReplyMessageBar';
 import Colors from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
-import React, { useState, useCallback, useEffect } from 'react';
-import { ImageBackground, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { GiftedChat, Bubble, InputToolbar, Send, SystemMessage } from 'react-native-gifted-chat';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { ImageBackground, StyleSheet, View } from 'react-native';
+import { Swipeable } from 'react-native-gesture-handler';
+import {
+  GiftedChat,
+  Bubble,
+  InputToolbar,
+  Send,
+  SystemMessage,
+  IMessage,
+} from 'react-native-gifted-chat';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import messageData from '@/assets/data/messages.json';
 
 const Page = () => {
-  const [messages, setMessages]: any[] = useState([]);
+  const [messages, setMessages] = useState<IMessage[]>([]);
   const [text, setText] = useState('');
   const insets = useSafeAreaInsets();
-  const [replyMsg, setReplyMsg] = useState<any>('Test');
+
+  const [replyMessage, setReplyMessage] = useState<IMessage | null>(null);
+  const swipeableRowRef = useRef<Swipeable | null>(null);
 
   useEffect(() => {
     setMessages([
-      {
-        _id: 2,
-        text: 'Yeah I love it too! Check out this galaxies.dev thing from Simon',
-        createdAt: new Date(),
-        user: {
-          _id: 1,
-          name: 'React Native',
-        },
-      },
-      {
-        _id: 1,
-        text: 'Hey mate, I really love this React Native WhatsApp Clone. What do you think?',
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'React Native',
-        },
-      },
+      ...messageData.map((message) => {
+        return {
+          _id: message.id,
+          text: message.msg,
+          createdAt: new Date(message.date),
+          user: {
+            _id: message.from,
+            name: message.from ? 'You' : 'Bob',
+          },
+        };
+      }),
       {
         _id: 0,
         system: true,
         text: 'All your base are belong to us',
+        createdAt: new Date(),
+        user: {
+          _id: 0,
+          name: 'Bot',
+        },
       },
     ]);
   }, []);
@@ -49,7 +60,7 @@ const Page = () => {
         {...props}
         containerStyle={{ backgroundColor: Colors.background }}
         renderActions={() => (
-          <View style={{ height: '100%', justifyContent: 'center', alignItems: 'center', left: 5 }}>
+          <View style={{ height: 44, justifyContent: 'center', alignItems: 'center', left: 5 }}>
             <Ionicons name="add" color={Colors.primary} size={28} />
           </View>
         )}
@@ -57,37 +68,34 @@ const Page = () => {
     );
   };
 
-  const ChatFooter = () => {
-    return (
-      <View style={{ height: 50, flexDirection: 'row', backgroundColor: '#E4E9EB' }}>
-        <View style={{ height: 50, width: 6, backgroundColor: '#89BC0C' }}></View>
-        <View style={{ flexDirection: 'column' }}>
-          <Text
-            style={{
-              color: '#89BC0C',
-              paddingLeft: 10,
-              paddingTop: 5,
-              fontWeight: '600',
-              fontSize: 15,
-            }}>
-            Bob
-          </Text>
-          <Text style={{ color: Colors.gray, paddingLeft: 10, paddingTop: 5 }}>{replyMsg}</Text>
-        </View>
-        <View
-          style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end', paddingRight: 10 }}>
-          <TouchableOpacity onPress={() => console.log('CLOSE')}>
-            <Ionicons name="close-circle-outline" color={Colors.primary} size={28} />
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  };
+  const updateRowRef = useCallback(
+    (ref: any) => {
+      if (
+        ref &&
+        replyMessage &&
+        ref.props.children.props.currentMessage?._id === replyMessage._id
+      ) {
+        swipeableRowRef.current = ref;
+      }
+    },
+    [replyMessage]
+  );
+
+  useEffect(() => {
+    if (replyMessage && swipeableRowRef.current) {
+      swipeableRowRef.current.close();
+      swipeableRowRef.current = null;
+    }
+  }, [replyMessage]);
 
   return (
     <ImageBackground
       source={require('@/assets/images/pattern.png')}
-      style={{ flex: 1, marginBottom: insets.bottom, backgroundColor: Colors.background }}>
+      style={{
+        flex: 1,
+        backgroundColor: Colors.background,
+        marginBottom: insets.bottom,
+      }}>
       <GiftedChat
         messages={messages}
         onSend={(messages: any) => onSend(messages)}
@@ -100,7 +108,6 @@ const Page = () => {
         )}
         bottomOffset={insets.bottom}
         renderAvatar={null}
-        renderChatFooter={ChatFooter}
         maxComposerHeight={100}
         textInputProps={styles.composer}
         renderBubble={(props) => {
@@ -126,7 +133,7 @@ const Page = () => {
         renderSend={(props) => (
           <View
             style={{
-              height: '100%',
+              height: 44,
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'center',
@@ -151,6 +158,17 @@ const Page = () => {
           </View>
         )}
         renderInputToolbar={renderInputToolbar}
+        renderChatFooter={() => (
+          <ReplyMessageBar clearReply={() => setReplyMessage(null)} message={replyMessage} />
+        )}
+        onLongPress={(context, message) => setReplyMessage(message)}
+        renderMessage={(props) => (
+          <ChatMessageBox
+            {...props}
+            setReplyOnSwipeOpen={setReplyMessage}
+            updateRowRef={updateRowRef}
+          />
+        )}
       />
     </ImageBackground>
   );
