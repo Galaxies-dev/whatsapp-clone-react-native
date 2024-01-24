@@ -21,6 +21,8 @@ Additional features:
 <img src="./screenshots/6.png" width=30%>
 <img src="./screenshots/7.png" width=30%>
 <img src="./screenshots/8.png" width=30%>
+<img src="./screenshots/9.png" width=30%>
+
 </div>
 
 ## Demo
