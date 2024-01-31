@@ -110,6 +110,7 @@ const Page = () => {
                   <Animated.View
                     style={[defaultStyles.item, { paddingLeft: 20 }, animatedRowStyles]}>
                     <Image source={{ uri: item.img }} style={styles.avatar} />
+
                     <View style={{ flex: 1, gap: 2 }}>
                       <Text style={{ fontSize: 18, color: item.missed ? Colors.red : '#000' }}>
                         {item.name}
@@ -126,6 +127,7 @@ const Page = () => {
                         </Text>
                       </View>
                     </View>
+
                     <View
                       style={{
                         flexDirection: 'row',

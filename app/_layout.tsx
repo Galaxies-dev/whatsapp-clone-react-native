@@ -10,6 +10,7 @@ import Colors from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
 // Cache the Clerk JWT
 const tokenCache = {
   async getToken(key: string) {

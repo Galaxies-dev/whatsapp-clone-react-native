@@ -3,7 +3,7 @@ import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
 import { useAuth } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
-import { View, ScrollView, Text, FlatList, Touchable } from 'react-native';
+import { View, ScrollView, Text, FlatList } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const Page = () => {
   const devices = [

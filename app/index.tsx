@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native';
-import welcomeImage from '@/assets/images/welcome.png';
 import Colors from '@/constants/Colors';
 import { Link } from 'expo-router';
+import welcomeImage from '@/assets/images/welcome.png';
 const welcome_image = Image.resolveAssetSource(welcomeImage).uri;
 
 const WelcomeScreen = () => {
