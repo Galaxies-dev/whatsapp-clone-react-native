@@ -17,13 +17,20 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.supersimon.whatsapp"
+      "bundleIdentifier": "com.supersimon.whatsapp",
+      "infoPlist": {
+        "NSContactsUsageDescription": "We need access to your contacts to sync them in the app"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "permissions": [
+        "android.permission.READ_CONTACTS",
+        "android.permission.READ_PHONE_STATE"
+      ],
       "package": "com.supersimon.whatsapp"
     },
     "web": {
@@ -34,7 +41,13 @@
     "plugins": [
       "expo-router",
       "expo-secure-store",
-      "expo-font"
+      "expo-font",
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "We need access to your contacts to sync them in the app"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
